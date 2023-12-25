@@ -15,7 +15,7 @@ function send(text: string) {
 }
 
 
-Deno.cron("say", "* * * * *",async () => {
+Deno.cron("say", "*/5 * * * *",async () => {
   if (Math.random() > 0.5) {
 
     const api = `https://api-popcord.vercel.app/img/nsfw?type=hentai_video`
