@@ -1,5 +1,6 @@
 import { DiscordWebhook } from "https://deno.land/x/denocord_webhook@v1.20/mod.ts";
 import "https://deno.land/std@0.191.0/dotenv/load.ts";
+import { parseBody } from "./bodyParser.ts";
 
 const DiscordWH = new DiscordWebhook(
   Deno.env.get("DISCORD_WEBHOOK_URL") ?? "",
@@ -21,7 +22,7 @@ Deno.cron("say", "* * * * *",async () => {
 
     const res = await fetch(api);
 
-    const url = (await res.json()).urls[0];
+    const url = await parseBody(res);
 
     send(`
 Discord R18 Bot (@amex2189)
