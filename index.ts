@@ -16,7 +16,7 @@ function send(text: string) {
 
 
 Deno.cron("say", "* * * * *",async () => {
-  if (Math.random() > (Math.random() - 0.95)) {
+  if (Math.random() > 0.5) {
 
     const api = `https://api-popcord.vercel.app/img/nsfw?type=hentai_video`
 
@@ -25,9 +25,23 @@ Deno.cron("say", "* * * * *",async () => {
     const url = await parseBody(res);
 
     send(`
+[Ero Mode]
 Discord R18 Bot (@amex2189)
 ${url}
 全世界のエロ画像・動画をリアルタイム検索しています :)
+`.trim());
+  }else {
+    const api = `https://api-popcord.vercel.app/img/sfw?type=anime_wallpaper`
+
+    const res = await fetch(api);
+
+    const url = await parseBody(res);
+
+    send(`
+[Kawaii Mode]
+Discord R18 Bot (@amex2189)
+${url}
+日本アニメのかわいい画像をリアルタイム検索しています :)
 `.trim());
   }
 });
