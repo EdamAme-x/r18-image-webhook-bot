@@ -13,12 +13,20 @@ function send(text: string) {
   });
 }
 
-Deno.cron("say", "1 * * * *",async () => {
-  if (Math.random() > (Math.random() - 0.25)) {
-    const url = (await fetch("https://rule34.xxx/index.php?page=post&s=random")).url;
+
+Deno.cron("say", "* * * * *",async () => {
+  if (Math.random() > (Math.random() - 0.95)) {
+
+    const api = `https://api-popcord.vercel.app/img/nsfw?type=japanese`
+
+    const res = await fetch(api);
+
+    const url = (await res.json()).urls[0];
+
     send(`
 Discord R18 Bot (@amex2189)
 ${url}
+全世界のエロ画像・動画をリアルタイム検索しています©。
 `.trim());
   }
 });
