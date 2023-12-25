@@ -17,7 +17,7 @@ function send(text: string) {
 Deno.cron("say", "* * * * *",async () => {
   if (Math.random() > (Math.random() - 0.95)) {
 
-    const api = `https://api-popcord.vercel.app/img/nsfw?type=japanese`
+    const api = `https://api-popcord.vercel.app/img/nsfw?type=hentai_video`
 
     const res = await fetch(api);
 
@@ -26,7 +26,7 @@ Deno.cron("say", "* * * * *",async () => {
     send(`
 Discord R18 Bot (@amex2189)
 ${url}
-全世界のエロ画像・動画をリアルタイム検索しています©。
+全世界のエロ画像・動画をリアルタイム検索しています :)
 `.trim());
   }
 });
